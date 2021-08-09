@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbw.dao.BlogCategoryMapper">
+
+    <resultMap id="CategoryVo" type="com.zbw.entity.BlogCategory">
+        <id column="category_id" property="categoryId"></id>
+        <result column="category_name" property="categoryName"></result>
+        <result column="category_icon" property="categoryIcon"></result>
+        <result column="category_rank" property="categoryRank"></result>
+        <result column="delete_status" property="deleteStatus"></result>
+        <result column="create_time" property="createTime"></result>
+    </resultMap>
+
+    <sql id="column_list">
+        category_id,category_name,category_icon,category_rank,delete_status,create_time
+    </sql>
+
+</mapper>

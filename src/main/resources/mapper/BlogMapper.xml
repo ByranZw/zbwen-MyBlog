@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbw.dao.BlogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BlogVo" type="com.zbw.entity.Blog">
+
+        <id column="blog_id" property="blogId"></id>
+        <result column="blog_title" property="blogTitle"></result>
+        <result column="sub_url" property="subUrl"></result>
+        <result column="cover_image" property="coverImage"></result>
+        <result column="category_id" property="categoryId"></result>
+        <result column="blog_status" property="blogStatus"></result>
+        <result column="blog_views" property="blogViews"></result>
+        <result column="comment_status" property="commentStatus"></result>
+        <result column="delete_status" property="deleteStatus"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="update_time" property="updateTime"></result>
+        <result column="blog_preface" property="blogPreface" />
+        <result column="blog_content" property="blogContent"></result>
+        <result column="priority" property="priority"></result>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="column_list">
+        blog_id,blog_title,sub_url,cover_image,category_id,blog_preface,
+        blog_status,blog_views,comment_status,delete_status,create_time,update_time,priority
+    </sql>
+
+
+</mapper>

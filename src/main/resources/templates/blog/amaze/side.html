@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="side-fragment" class="am-u-lg-4 am-u-sm-12 am-u-lg-offset-0 am-u-sm-offset-0 sidebar-container">
+  
+  <div class="side-container">
+    <section>
+      <section>
+        <div class="sidebar-header">
+                <span class="sidebar-header-title">
+                    搜索文章
+                </span>
+        </div>
+        <div class="sidebar-search">
+          <form method="get" onsubmit="return false;" accept-charset="utf-8">
+            <div class="search-input">
+              <input type="text" name="keyword" id="searchbox" autocomplete="off" placeholder="搜搜看...回车就好">
+              <button type="submit" class="search-submit" onclick="search()"></button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section>
+        <div class="sidebar-header">
+                <span class="sidebar-header-title">
+                    热门标签
+                </span>
+        </div>
+        <div class="tags ">
+          <th:block th:if="${null != hotTags}">
+            <th:block th:each="hotTag : ${hotTags}">
+              <a class="hover-link" rel="tag" th:href="@{'/tag/' + ${hotTag.tagId}}">
+                <th:block th:text="${hotTag.tagName}+'('+${hotTag.tagCount}+')'"></th:block>
+              </a>
+            </th:block>
+          </th:block>
+        </div>
+      </section>
+      <section>
+        <div class="sidebar-header">
+                <span class="sidebar-header-title">
+                    友情链接
+                </span>
+        </div>
+        <div class="sidebar-list">
+          <ul class="sidebar-list-body sidebar-list-items">
+            <th:block th:if="${null != friendLinks}">
+              <th:block th:each="friendLink : ${friendLinks}">
+                <li class="sidebar-list-item"><a target="_blank" th:href="${friendLink.linkUrl}"
+                                                 class="hover-link tag tooltipped tooltipped-n">
+                  <th:block th:text="${friendLink.linkName}"></th:block>
+                </a></li>
+              </th:block>
+            </th:block>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <div class="sidebar-header">
+                <span class="sidebar-header-title">
+                    点击最多
+                </span>
+        </div>
+        <main class="sidebar-lists">
+          <ul>
+            <th:block th:if="${null != hotBlogs}">
+              <th:block th:each="hotBlog : ${hotBlogs}">
+                <li class="sidebar-list-item"><a class="hover-link tag tooltipped tooltipped-n"
+                                                 th:href="@{'/blog/' + ${hotBlog.blogId}}">
+                  <th:block th:text="${hotBlog.blogTitle}"></th:block>
+                </a></li>
+              </th:block>
+            </th:block>
+          </ul>
+        </main>
+      </section>
+    </section>
+  </div>
+
+</div>
+</html>

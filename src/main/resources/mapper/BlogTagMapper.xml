@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbw.dao.BlogTagMapper">
+
+    <resultMap id="TagVo" type="com.zbw.entity.BlogTags">
+        <id column="tag_id" property="tagId"></id>
+        <result column="tag_name" property="tagName"></result>
+        <result column="delete_status" property="deleteStatus"></result>
+        <result column="create_time" property="createTime"></result>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="column_list">
+        tag_id,tag_name,delete_status,create_time
+    </sql>
+
+
+</mapper>

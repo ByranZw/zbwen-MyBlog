@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zbw.dao.BlogCommentMapper">
+
+    <resultMap id="CommentVo" type="com.zbw.entity.BlogComment">
+        <id column="comment_id" property="commentId"></id>
+        <result column="comment_body" property="commentBody"></result>
+        <result column="blog_id" property="blogId"></result>
+        <result column="commentator" property="commentator"></result>
+        <result column="email" property="email"></result>
+        <result column="create_time" property="createTime"></result>
+        <result column="commentator_ip" property="commentatorIp"></result>
+        <result column="reply_body" property="replyBody"></result>
+        <result column="reply_time" property="replyTime"></result>
+        <result column="comment_status" property="commentStatus"></result>
+        <result column="delete_status" property="deleteStatus"></result>
+    </resultMap>
+
+    <sql id="column_list">
+        comment_id,comment_body,blog_id,commentator,email,create_time,
+        commentator_ip,reply_body,reply_time,comment_status,delete_status
+    </sql>
+
+    <sql id="column_list_vo">
+        commentator,comment_body,email,
+        create_time,reply_body,reply_time,comment_status,delete_status
+    </sql>
+
+    <select id="findAndPage" parameterType="Map" resultType="com.zbw.pojo.vo.BlogCommentVo">
+        select b.blog_title,c.commentator,c.comment_body,c.email,c.create_time,
+               c.reply_body,c.reply_time,c.comment_status,c.delete_status,c.comment_id
+        from rb_blog b,rb_blog_comment c
+        where
+        <if test="blogId != null">
+            c.blog_id = #{blogId} and
+        </if>
+
+        b.blog_id = c.blog_id
+        order by c.blog_id desc
+        limit #{start},#{limit}
+    </select>
+
+
+</mapper>

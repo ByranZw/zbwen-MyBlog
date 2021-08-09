@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<footer class="footer blog-footer" th:fragment="footer-fragment">
+    <div class="blog-text-center">
+        &copy;
+        <span th:text="${configurations.get('footerDesc')}"></span>
+        <span class="ft-warn">&heartsuit;</span>&nbsp;
+        </br>
+        <a href="http://www.beian.miit.gov.cn/">闽ICP备20013603-1号</a><br/>
+<!--
+        Powered by <a href="#" target="_blank" th:text="${configurations.get('sysAuthor')}"></a>
+-->
+    </div>
+</footer>
+</html>
